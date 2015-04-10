@@ -1,0 +1,16 @@
+{
+    "name": "vendor/toge-goreng",
+    "description": "Toge Goreng CMS, The CMS that wont hurt you, you can explore and manage it",
+    "authors": [
+        {
+            "name": "sahid",
+            "email": "duniadua@gmail.com"
+        }
+    ],
+    "require": {
+        "kriswallsmith/buzz": "0.13",
+        "twig/twig": "1.18.0",
+        "monolog/monolog": "1.13.0",
+        "swiftmailer/swiftmailer": "5.3.1"
+    }
+}

@@ -1,0 +1,64 @@
+{% include 'html_config.html.twig'%}
+<div class="container">
+
+    <div class="blog-header">
+        <h1 class="blog-title">The Bootstrap Blog</h1>
+        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            {% for val in content %}
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{ val.title  }}</h2>
+                <p class="blog-post-meta">Posted on {{ val.createdt|date('d-m-Y')  }} by <a href="#">{{ val.author|title }}</a></p>                
+                {{ val.content|raw }}
+                <a href="{{ site_url }}/page/"{{val.id}}>More</a>
+            </div><!-- /.blog-post -->
+            {% endfor %}
+            <nav>
+                <ul class="pager">
+                    <li><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>Category</h4>
+                <ol class="list-unstyled">
+                    {% for val in categorylist %}
+                    <li><a href="{{ val.id }}">{{ val.cat_name }}</a></li>                        
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                    {% for archive in archivePeriod %}
+                        <li><a href="{{ site_url }}/archive/{{ archive.tahun }}/{{ archive.bulan }}">{{ archive.tahun }}/{{ archive.bulan }}</a></li>
+                    {% endfor %}                    
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</div><!-- /.container -->
+{% include 'footer.html.twig' %}

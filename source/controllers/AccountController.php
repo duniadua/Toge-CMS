@@ -1,0 +1,60 @@
+<?php
+/**
+ * Description of AccountController
+ *
+ * @author sahid
+ * @link www.terastekno.net
+ * 
+ */
+class AccountController extends CI_Controller {
+
+    //put your code here
+    private $viewAccount = 'account';
+    private $listAccount = 'listaccount';
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Account_Model','account');
+    }
+
+    public function index() {
+        if($this->input->post()){
+            $this->account->insert();
+            redirect('account/list');
+        }
+                
+        $this->load->view('backend_header');
+        $this->load->view($this->viewAccount);
+        $this->load->view('backend_footer');
+    }
+    
+    public function listAccount(){
+        $data['listAccount']= $this->account->gets();
+        
+        $this->load->view('backend_header');
+        $this->load->view($this->listAccount, $data);
+        $this->load->view('backend_footer');
+    }
+    
+    public function update($id){
+        $param = array(
+            'where' => 'id ='.$id,
+        );
+        
+        $data['rowAcc']= $this->account->get($param);
+        if($this->input->post()){                        
+            $this->account->update('id', $id);
+            redirect('account/list');
+        }
+        
+        $this->load->view('backend_header');
+        $this->load->view($this->viewAccount, $data);
+        $this->load->view('backend_footer');
+    }
+    
+    public function delete($id){                
+        $this->account->delete($id);
+        redirect('account/list');
+    }
+
+}
