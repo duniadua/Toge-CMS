@@ -1,5 +1,5 @@
 <?php
-
+include_once FCPATH.'application/core/TG_Model.php';
 /**
  * Description of Comment
  *
@@ -8,9 +8,8 @@
  * 
  */
 class Comment_Model extends TG_Model {
-    protected static $table = 'tg_comment';
-
-    public function __construct($tableName = self::table) {
+    
+    public function __construct($tableName = 'tg_comment') {
         parent::__construct($tableName);
     }
 

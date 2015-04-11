@@ -78,6 +78,9 @@ $route['upload/delete/(:num)'] = "UploadController/delete/$1";
 $route['page/(:num)/(:any)'] = "ShowController/pid/$1";
 $route['archive/(:num)/(:num)'] = "ArchiveController/byMonthYear/$1/$2";
 
-$route['statis'] = "CekAuthController/setAuth";
+$route['comment'] = "CommentController";
+$route['comment/list'] = "CommentController/listPage";
+$route['comment/update/(:num)'] = "CommentController/update/$1";
+$route['comment/delete/(:num)'] = "CommentController/delete/$1";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
