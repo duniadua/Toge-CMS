@@ -11,7 +11,7 @@
                         <th>Nama</th>
                         <th>Content</th>
                         <th>Post ID</th>
-                        <th>Pub Date</th>
+                        <th>Date</th>
                         <th>Status</th>
                         <th>Ip Address</th>
                     </tr>

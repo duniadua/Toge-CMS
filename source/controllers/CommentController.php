@@ -15,7 +15,7 @@
  */
 class CommentController extends CI_Controller {
 
-    private $viewPage = 'menupage';
+    private $viewPage = 'comment/update';
     private $listPage = 'comment/list';
 
     public function __construct() {
@@ -32,4 +32,26 @@ class CommentController extends CI_Controller {
         $this->load->view('backend_footer');
     }
 
+    public function update($id){
+        $param = array(
+            'where' => 'id ='.$id,
+        );
+        
+//        @TODO rapihkan field2  di view update
+        
+        $data['rowAcc']= $this->comment->get($param);
+        if($this->input->post()){                        
+            $this->comment->update('id', $id);
+            redirect('comment/list');
+        }
+        
+        $this->load->view('backend_header');
+        $this->load->view($this->viewAccount, $data);
+        $this->load->view('backend_footer');
+    }
+    
+    public function delete($id){                
+        $this->comment->delete($id);
+        redirect('comment/list');
+    }
 }
