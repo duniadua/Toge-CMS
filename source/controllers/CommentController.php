@@ -46,7 +46,7 @@ class CommentController extends CI_Controller {
         }
         
         $this->load->view('backend_header');
-        $this->load->view($this->viewAccount, $data);
+        $this->load->view($this->viewPage, $data);
         $this->load->view('backend_footer');
     }
     
