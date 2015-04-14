@@ -22,7 +22,13 @@ class CommentController extends CI_Controller {
         parent::__construct();
         $this->load->model('comment_model', 'comment');
     }
-   
+
+    public function index() {
+        if ($this->input->post()) {
+            $this->comment->insert();
+        }
+    }
+
     public function listPage() {
         $data['pageTitle'] = 'Comment List';
         $data['listPage'] = $this->comment->gets();
@@ -32,26 +38,27 @@ class CommentController extends CI_Controller {
         $this->load->view('backend_footer');
     }
 
-    public function update($id){
+    public function update($id) {
         $param = array(
-            'where' => 'id ='.$id,
+            'where' => 'id =' . $id,
         );
-        
+
 //        @TODO rapihkan field2  di view update
-        
-        $data['rowAcc']= $this->comment->get($param);
-        if($this->input->post()){                        
+
+        $data['rowAcc'] = $this->comment->get($param);
+        if ($this->input->post()) {
             $this->comment->update('id', $id);
             redirect('comment/list');
         }
-        
+
         $this->load->view('backend_header');
         $this->load->view($this->viewPage, $data);
         $this->load->view('backend_footer');
     }
-    
-    public function delete($id){                
+
+    public function delete($id) {
         $this->comment->delete($id);
         redirect('comment/list');
     }
+
 }
