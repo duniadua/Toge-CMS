@@ -30,8 +30,8 @@
                             ?>
                             <tr>
                                 <td>
-                                    <a href="<?php echo site_url('postpage/update/' . $row->ID); ?>"><i class="fa fa-circle-o-notch fa-2x" style="color: #198cff"></i></a>
-                                    <a href="<?php echo site_url('postpage/delete/' . $row->ID); ?>"><i class="fa fa-minus-circle fa-2x" style="color: #e13300"></i></a>
+                                    <a href="<?php echo site_url('comment/update/' . $row->ID); ?>"><i class="fa fa-circle-o-notch fa-2x" style="color: #198cff"></i></a>
+                                    <a href="<?php echo site_url('comment/delete/' . $row->ID); ?>"><i class="fa fa-minus-circle fa-2x" style="color: #e13300"></i></a>
                                 </td>
                                 <td><?php echo $i; ?></td>
                                 <td><?php if(isset($row->name)) echo $row->name; ?></td>

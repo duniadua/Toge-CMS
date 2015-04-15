@@ -11,29 +11,23 @@ endif;
         <div class="col-xs-12 col-sm-8">
             <?php 
             $hidden = array(
-                'registered' => date('Y-m-d H:i:s'),
-            );
+                'registered' => date('Y-m-d H:i:s'),                
+            );                        
             
-            
-            echo form_open('/comment','',$hidden); 
+            echo form_open('/comment/update/'.$row->ID,'',$hidden); 
             ?>
             <div class="form-horizontal">                            
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" name="username" class="form-control"  placeholder="username" value="<?php if (isset($row->username)) echo $row->username ?>">
+                        <input type="text" name="name" class="form-control"  placeholder="name" value="<?php if (isset($row->name)) echo $row->name ?>">
                     </div>
                 </div>   
+                
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <label for="status" class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-10">
-                        <input type="text" name="email" class="form-control"  placeholder="email" value="<?php if (isset($row->email)) echo $row->email ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" name="password" class="form-control"  placeholder="password" value="<?php if (isset($row->password)) echo $row->password ?>">
+                        <textarea name="content"><?php if (isset($row->content)) echo $row->content ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">

@@ -43,8 +43,6 @@ class CommentController extends CI_Controller {
             'where' => 'id =' . $id,
         );
 
-//        @TODO rapihkan field2  di view update
-
         $data['rowAcc'] = $this->comment->get($param);
         if ($this->input->post()) {
             $this->comment->update('id', $id);
