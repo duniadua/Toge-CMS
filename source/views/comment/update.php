@@ -32,11 +32,12 @@ endif;
                 </div>
                 <div class="form-group">
                     <label for="status" class="col-sm-2 control-label">Status</label>
-                    <div class="col-sm-10">
-                        <select name="status" class ="form-control">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                        </select>
+                    <div class="col-sm-10">                        
+                        <?php 
+                        $options = [0 => 'No', 1 => 'Yes'];
+                        
+                        echo form_dropdown('status', $options, $row->status, 'class = form-control');                        
+                        ?>
                     </div>
                 </div>
                 <div class="form-group">

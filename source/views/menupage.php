@@ -42,7 +42,7 @@ endif;
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="title" class="col-sm-2 control-label">Url To Add From Post</label>
+                    <label for="title" class="col-sm-2 control-label">Url From Post</label>
                     <div class="col-sm-4 col-md-8">
                         <select name="url" class ="form-control">
                             <option value="">-- None --</option> 
@@ -74,7 +74,7 @@ endif;
                     </div>
                 </div>                
                 <div class="form-group">                    
-                    <a class="btn btn-lg btn-warning" href="<?php echo site_url('postpage'); ?>"> Cancel</a>
+                    <a class="btn btn-lg btn-warning" href="<?php echo site_url('backend'); ?>"> Cancel</a>
                     <input name="submit" class="btn btn-lg btn-primary " type="submit" value="Save"/>                    
                 </div>
             </div>

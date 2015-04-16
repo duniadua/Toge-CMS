@@ -12,8 +12,7 @@
                         <th>Content</th>
                         <th>Post ID</th>
                         <th>Date</th>
-                        <th>Status</th>
-                        <th>Ip Address</th>
+                        <th>Status</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +37,7 @@
                                 <td><?php if(isset($row->content)) echo word_limiter($row->content, 50); ?></td>
                                 <td><?php if(isset($row->post_id)) echo $row->post_id ?></td>
                                 <td><?php if(isset($row->createdt)) echo date('Y-m-d H:i:s', strtotime($row->createdt)); ?></td>
-                                <td><?php if(isset($status)) echo $status; ?></td>
-                                <td><?php if(isset($row->ip_address)) echo $row->ip_address; ?></td>
+                                <td><?php if(isset($status)) echo $status; ?></td>                                
                             </tr>
                             <?php
                         endforeach;
