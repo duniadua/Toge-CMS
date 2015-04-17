@@ -38,6 +38,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('setmenu'); ?>">Create Menus</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('postpage/list'); ?>">Create Pages</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('upload'); ?>">Upload Media</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('comment/list'); ?>">Approve Comments</a></li>
                         <li><a href="<?php echo site_url('backend'); ?>">Dashboard</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Logout</a></li>

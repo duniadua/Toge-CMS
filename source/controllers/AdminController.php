@@ -16,11 +16,13 @@ class AdminController extends CI_Controller {
     }
 
     public function index() {
-        $comentParam = ['where' => 'status = 1'];
-        $pageParam = ['where' => 'status = 1', 'limit' => 1];
+        $comentParam = ['where' => 'status = 1', 'limit' => 10 , 'order' => 'ID DESC'];
+        $pageParam = ['where' => 'status = 1', 'limit' => 1];        
 
         $data['comment_list'] = $this->comment->gets($comentParam);
-        $data['page_list'] = $this->comment->gets($pageParam);
+        $data['page_list'] = $this->page->gets($pageParam);
+        $data['page_count'] = $this->page->gets();
+        $data['comment_count'] = $this->comment->gets();
 
         $this->load->view('backend_header');
         $this->load->view('backend', $data);

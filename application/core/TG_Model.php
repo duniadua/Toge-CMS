@@ -114,7 +114,7 @@ class TG_Model extends CI_Model {
     }
 
     /**
-     * Insert the updates
+     * 
      *
       <code>
       $this->model_name->update($field, $param)
@@ -151,7 +151,7 @@ class TG_Model extends CI_Model {
     }
 
     /**
-     * Insert the updates
+     * 
      *
       <code>
      * Delete Record based on key id      
