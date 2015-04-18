@@ -38,13 +38,13 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('setmenu'); ?>">Create Menus</a></li>
-                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('postpage/list'); ?>">Create Pages</a></li>
-                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('upload'); ?>">Upload Media</a></li>
-                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('comment/list'); ?>">Approve Comments</a></li>
-                        <li><a href="<?php echo site_url('backend'); ?>">Dashboard</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="<?php echo site_url('backend'); ?>"><i class="fa fa-dashboard"></i>  Dashboard</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('setmenu'); ?>"><i class="fa fa-bar-chart-o"></i>  Create Menus</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('postpage/list'); ?>"><i class="fa fa-pencil"></i>  Create Pages</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('upload'); ?>"><i class="fa fa-image"></i>  Upload Media</a></li>
+                        <li class="hidden-lg hidden-md"><a href="<?php echo site_url('comment/list'); ?>"><i class="fa fa-comments-o"></i> Approve Comments</a></li>                        
+                        <li><a href="<?php echo site_url('config'); ?>"><i class="fa fa-cogs"></i> Settings</a></li>
+                        <li><a href="<?php echo site_url('logout'); ?>"><i class="fa fa-lock"></i> Logout</a></li>
                     </ul>                    
                 </div>
             </div>
