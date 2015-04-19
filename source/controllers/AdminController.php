@@ -7,6 +7,9 @@
  * @link www.terastekno.net
  * 
  */
+use Monolog\Logger;
+use Monolog\Handler\FirePHPHandler;
+
 class AdminController extends CI_Controller {
 
     public function __construct() {
@@ -16,17 +19,28 @@ class AdminController extends CI_Controller {
     }
 
     public function index() {
-        $comentParam = ['where' => 'status = 1', 'limit' => 10 , 'order' => 'ID DESC'];
-        $pageParam = ['where' => 'status = 1', 'limit' => 1];        
+        $log = new Logger('login');
+        $log->pushHandler(new FirePHPHandler(Logger::DEBUG));
+        $log->addDebug('Login Called');
+        $log->addAlert('user login');
+        
+        $cekLogin = $this->authorization->cekAuthorization();
 
-        $data['comment_list'] = $this->comment->gets($comentParam);
-        $data['page_list'] = $this->page->gets($pageParam);
-        $data['page_count'] = $this->page->gets();
-        $data['comment_count'] = $this->comment->gets();
+        if ($cekLogin):
+            $comentParam = ['where' => 'status = 1', 'limit' => 10, 'order' => 'ID DESC'];
+            $pageParam = ['where' => 'status = 1', 'limit' => 1];
 
-        $this->load->view('backend_header');
-        $this->load->view('backend', $data);
-        $this->load->view('backend_footer');
+            $data['comment_list'] = $this->comment->gets($comentParam);
+            $data['page_list'] = $this->page->gets($pageParam);
+            $data['page_count'] = $this->page->gets();
+            $data['comment_count'] = $this->comment->gets();
+
+            $this->load->view('backend_header');
+            $this->load->view('backend', $data);
+            $this->load->view('backend_footer');
+        else:
+            redirect(Authorization::redirectLogOut());
+        endif;
     }
 
 }

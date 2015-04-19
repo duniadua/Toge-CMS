@@ -41,6 +41,7 @@ endif;
                         </select>
                     </div>
                 </div>
+                <?php //TODO url from direct key ?>
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Url From Post</label>
                     <div class="col-sm-4 col-md-8">

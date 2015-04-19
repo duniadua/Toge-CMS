@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of Authorization
  *
@@ -17,12 +18,25 @@ class Authorization extends CI_Session {
      * Setup user redirect if failed
      * Return url to redirect
      * <code>
-     * setRedirectLogOut($url = 'url for redirect')
+     * setRedirectLogOut($url = 'url to redirect')
      * </code>     
      */
 
     public static function setRedirectLogOut($url = 'logout') {
         return $url;
+    }
+    
+    /*
+     * Redirect if failed
+     * Return url to redirect
+     * <code>
+     * redirectLogOut()
+     * using Authorization::redirectLogOut()
+     * </code>     
+     */
+
+    public static function redirectLogOut() {
+        return Authorization::setRedirectLogOut();
     }
 
     /*
@@ -30,14 +44,25 @@ class Authorization extends CI_Session {
      * if session isValid was FALSE should redirect to 
      * setRedirectLogOut function     
      */
-    public function cekAuthorization() {
-        $validLogin = $this->userdata('isValid');
 
-        if (isset($validLogin)):
-            if ($validLogin == 'FALSE'):
+    public function cekAuthorization() {
+        $authReturn = FALSE;
+        try {
+            $validLogin = $this->userdata('isValid');
+
+            if (isset($validLogin)):
+                if ($validLogin == 'TRUE'):
+                    return $authReturn = TRUE;
+                endif;
+            else:
+                return $authReturn = FALSE;
                 return redirect($this->setRedirectLogOut());
             endif;
-        endif;
+        } catch (Exception $exc) {
+            echo $this->failedLogin($exc->getMessage());
+        }
+
+        return $authReturn;
     }
 
     /*
@@ -46,6 +71,7 @@ class Authorization extends CI_Session {
      * Session item is err_mssg, you can get the item from this variable
      * set temporary flash data session    
      */
+
     public function failedLogin($message) {
         $this->set_flashdata('err_mssg', "<p class='text-danger'>" . $message . "</p>");
     }
@@ -54,6 +80,7 @@ class Authorization extends CI_Session {
      * Setup User data to session
      * isValid return as True value         
      */
+
     public function setUserCredential($email) {
         $userData = array(
             'email' => $email,
