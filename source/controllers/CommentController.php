@@ -16,12 +16,11 @@
 class CommentController extends CI_Controller {
 
     private $viewPage = 'comment/update';
-    private $listPage = 'comment/list';    
+    private $listPage = 'comment/list';
 
     public function __construct() {
         parent::__construct();
         $this->load->model('comment_model', 'comment');
-        $cekLogin = $this->authorization->cekAuthorization();
     }
 
     public function index() {
@@ -30,7 +29,9 @@ class CommentController extends CI_Controller {
         }
     }
 
-    public function listPage() {        
+    public function listPage() {
+        $cekLogin = $this->authorization->cekAuthorization();
+
         if ($cekLogin):
             $data['pageTitle'] = 'Comment List';
             $data['listPage'] = $this->comment->gets();
@@ -59,7 +60,9 @@ class CommentController extends CI_Controller {
         $this->load->view('backend_footer');
     }
 
-    public function delete($id) {        
+    public function delete($id) {
+        $cekLogin = $this->authorization->cekAuthorization();
+        
         if ($cekLogin):
             $this->comment->delete($id);
             redirect('comment/list');

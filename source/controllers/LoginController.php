@@ -32,7 +32,7 @@ class LoginController extends CI_Controller {
         
         if ($this->input->post('submit') == 'Login'):
             $email = $this->input->post('email');
-            if ($this->cekUserLogin()):
+            if ($this->cekUserLogin()):                                     
                 $this->authorization->setUserCredential($email);
                 redirect('backend');                
             else:                

@@ -15,15 +15,15 @@ class AdminController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('comment_model', 'comment');
-        $this->load->model('page_model', 'page');
-        $cekLogin = $this->authorization->cekAuthorization();
+        $this->load->model('page_model', 'page');        
     }
 
     public function index() {
         $log = new Logger('login');
         $log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
-        $log->addDebug('Login Success');        
-                
+        $log->addDebug('Login Success');               
+        $cekLogin = $this->authorization->cekAuthorization();        
+        
         if ($cekLogin):
             $comentParam = ['where' => 'status = 1', 'limit' => 10, 'order' => 'ID DESC'];
             $pageParam = ['where' => 'status = 1', 'limit' => 1];
