@@ -8,24 +8,22 @@
  * 
  */
 use Monolog\Logger;
-use Monolog\Handler\FirePHPHandler;
+use Monolog\Handler\BrowserConsoleHandler;
 
 class AdminController extends CI_Controller {
-
+        
     public function __construct() {
         parent::__construct();
         $this->load->model('comment_model', 'comment');
         $this->load->model('page_model', 'page');
+        $cekLogin = $this->authorization->cekAuthorization();
     }
 
     public function index() {
         $log = new Logger('login');
-        $log->pushHandler(new FirePHPHandler(Logger::DEBUG));
-        $log->addDebug('Login Called');
-        $log->addAlert('user login');
-        
-        $cekLogin = $this->authorization->cekAuthorization();
-
+        $log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
+        $log->addDebug('Login Success');        
+                
         if ($cekLogin):
             $comentParam = ['where' => 'status = 1', 'limit' => 10, 'order' => 'ID DESC'];
             $pageParam = ['where' => 'status = 1', 'limit' => 1];

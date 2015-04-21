@@ -25,7 +25,7 @@ class Authorization extends CI_Session {
     public static function setRedirectLogOut($url = 'logout') {
         return $url;
     }
-    
+
     /*
      * Redirect if failed
      * Return url to redirect
@@ -56,7 +56,6 @@ class Authorization extends CI_Session {
                 endif;
             else:
                 return $authReturn = FALSE;
-                return redirect($this->setRedirectLogOut());
             endif;
         } catch (Exception $exc) {
             echo $this->failedLogin($exc->getMessage());

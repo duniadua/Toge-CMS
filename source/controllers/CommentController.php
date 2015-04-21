@@ -16,11 +16,12 @@
 class CommentController extends CI_Controller {
 
     private $viewPage = 'comment/update';
-    private $listPage = 'comment/list';
+    private $listPage = 'comment/list';    
 
     public function __construct() {
         parent::__construct();
         $this->load->model('comment_model', 'comment');
+        $cekLogin = $this->authorization->cekAuthorization();
     }
 
     public function index() {
@@ -29,13 +30,17 @@ class CommentController extends CI_Controller {
         }
     }
 
-    public function listPage() {
-        $data['pageTitle'] = 'Comment List';
-        $data['listPage'] = $this->comment->gets();
+    public function listPage() {        
+        if ($cekLogin):
+            $data['pageTitle'] = 'Comment List';
+            $data['listPage'] = $this->comment->gets();
 
-        $this->load->view('backend_header');
-        $this->load->view($this->listPage, $data);
-        $this->load->view('backend_footer');
+            $this->load->view('backend_header');
+            $this->load->view($this->listPage, $data);
+            $this->load->view('backend_footer');
+        else:
+            redirect(Authorization::redirectLogOut());
+        endif;
     }
 
     public function update($id) {
@@ -54,9 +59,13 @@ class CommentController extends CI_Controller {
         $this->load->view('backend_footer');
     }
 
-    public function delete($id) {
-        $this->comment->delete($id);
-        redirect('comment/list');
+    public function delete($id) {        
+        if ($cekLogin):
+            $this->comment->delete($id);
+            redirect('comment/list');
+        else:
+            redirect(Authorization::redirectLogOut());
+        endif;
     }
 
 }

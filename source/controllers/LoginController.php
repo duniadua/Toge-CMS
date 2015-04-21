@@ -13,15 +13,21 @@
  * @link www.terastekno.net
  * 
  */
+use Monolog\Logger;
+use Monolog\Handler\BrowserConsoleHandler;
+
 class LoginController extends CI_Controller {
 
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->load->model('login_model', 'login');
+        $this->load->model('login_model', 'login');        
     }
 
     public function index() {
+        $log = new Logger('login');
+        $log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
+        $log->addDebug('Login Page Called');
         $data['message'] = $this->session->flashdata('err_mssg');
         
         if ($this->input->post('submit') == 'Login'):
@@ -29,10 +35,10 @@ class LoginController extends CI_Controller {
             if ($this->cekUserLogin()):
                 $this->authorization->setUserCredential($email);
                 redirect('backend');                
-            else:
+            else:                
                 $message = 'Login Failed Please Check Username Password';           
                 $this->authorization->failedLogin($message);
-                redirect('login');
+                redirect('login');                
             endif;
         endif;
 
