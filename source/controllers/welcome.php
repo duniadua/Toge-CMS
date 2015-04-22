@@ -21,30 +21,13 @@ class Welcome extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function __construct() {
-        parent::__construct();
-        $this->load->model('menus_model', 'mm');
+        parent::__construct();        
     }
 
     public function index() {
-        $this->load->view('welcome_message');
+        redirect('home');
     }
-
-    public function testIndex() {
-        $menuArray = array(
-            'where' => ' status = 1',
-            'and' => 'parent = 0',
-        );
-        
-        $menuChilArray = array(
-            'where' => ' status = 1',            
-        );
-
-        $data['menus'] = $this->mm->gets($menuArray);
-        $data['menus_child'] = $this->mm->gets($menuChilArray);
-
-        $this->load->view('welcome_message', $data);
-    }
-
+   
 }
 
 /* End of file welcome.php */

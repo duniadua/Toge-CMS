@@ -38,9 +38,8 @@
 |
 */
 
-$route['default_controller'] = "ShowController";
+$route['default_controller'] = "showcontroller";
 $route['404_override'] = '';
-$route['home'] = "ShowController";
 $route['backend'] = "AdminController";
 $route['login'] = "LoginController";
 $route['logout'] = "LoginController/logout";
@@ -82,5 +81,7 @@ $route['comment'] = "CommentController";
 $route['comment/list'] = "CommentController/listPage";
 $route['comment/update/(:num)'] = "CommentController/update/$1";
 $route['comment/delete/(:num)'] = "CommentController/delete/$1";
+
+$route['themes'] = "ThemesController";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
