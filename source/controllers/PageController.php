@@ -17,18 +17,18 @@ class PageController extends CI_Controller {
 
     private $viewPage = 'page';
     private $listPage = 'listpage';
+    private $cekLogin;
 
     public function __construct() {
         parent::__construct();
         $this->load->model('Page_Model', 'page');
         $this->load->model('Category_Model', 'cm');
-        $this->load->library('Authorization', '', 'authorize');        
+        $this->load->library('Authorization', '', 'authorize');
+        $this->cekLogin = $this->authorization->cekAuthorization();
     }
 
-    public function index() {
-        $cekLogin = $this->authorization->cekAuthorization();
-        
-        if ($cekLogin):
+    public function index() {        
+        if ($this->cekLogin):
             if ($this->input->post()) {
                 $this->page->insert();
 //            redirect('page/list');
@@ -48,10 +48,9 @@ class PageController extends CI_Controller {
         endif;
     }
 
-    public function listPage() {  
-        $cekLogin = $this->authorization->cekAuthorization();
+    public function listPage() {          
         
-        if ($cekLogin):
+        if ($this->cekLogin):
             $data['pageTitle'] = 'Page List';
             $data['listPage'] = $this->page->gets();
 
@@ -63,10 +62,9 @@ class PageController extends CI_Controller {
         endif;
     }
 
-    public function update($id) {    
-        $cekLogin = $this->authorization->cekAuthorization();
+    public function update($id) {            
         
-        if ($cekLogin):
+        if ($this->cekLogin):
             $data['pageTitle'] = 'Page Update';
             $param = array(
                 'where' => 'id =' . $id,

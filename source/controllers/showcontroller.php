@@ -15,7 +15,7 @@
  */
 class ShowController extends CI_Controller {
 
-    private $listPage = 'homebase.html.twig';
+    private $indexPage = 'homebase.html.twig';
     private $homePage = 'home.html.twig';
 
     public function __construct() {
@@ -48,7 +48,7 @@ class ShowController extends CI_Controller {
         $data['menu_child'] = $this->mm->gets($menuChildArray);
         
 
-        $this->twig->display($this->listPage, $data);
+        $this->twig->display($this->indexPage, $data);
     }
     
     public function pid($id = null) {

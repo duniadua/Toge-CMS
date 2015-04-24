@@ -82,6 +82,6 @@ $route['comment/list'] = "CommentController/listPage";
 $route['comment/update/(:num)'] = "CommentController/update/$1";
 $route['comment/delete/(:num)'] = "CommentController/delete/$1";
 
-$route['themes'] = "ThemesController";
+$route['themes'] = "ThemesController/showDirectory";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
