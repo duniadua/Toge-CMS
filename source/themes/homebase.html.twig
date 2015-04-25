@@ -15,7 +15,7 @@
                 <h2 class="blog-post-title">{{ val.title  }}</h2>
                 <p class="blog-post-meta">Posted on {{ val.createdt|date('d-m-Y')  }} by <a href="#">{{ val.author|title }}</a></p>                
                 {{ val.content|raw }}
-                <a href="{{ site_url }}/page/"{{val.id}}>More</a>
+                <a href="{{ site_url }}/page/{{ val.ID|number_format }}/{{ val.title|replace(' ', '-') }}">More</a>
             </div><!-- /.blog-post -->
             {% endfor %}
             <nav>

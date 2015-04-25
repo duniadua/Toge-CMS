@@ -41,6 +41,8 @@ class TG_Model extends CI_Model {
             $sql .= " ORDER BY " . $param["order"];
         if (isset($param["limit"]))
             $sql .= " LIMIT " . $param["limit"];
+        if (isset($param["offset"]))
+            $sql .= " OFFSET " . $param["offset"];
 
         return $this->db->query($sql)->result();
     }
@@ -165,4 +167,18 @@ class TG_Model extends CI_Model {
         $this->db->delete($this->tableName, array('id' => $id));
     }
 
+    /**
+     * 
+     *
+      <code>
+     * Count Record in table
+     * 
+      </code>
+     *
+     * @access	public
+     * @return	integer
+     */
+    public function countRecord(){
+        return $this->db->count_all($this->tableName);
+    }
 }

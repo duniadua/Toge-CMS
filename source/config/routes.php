@@ -74,7 +74,7 @@ $route['do_upload'] = "UploadController/doUpload";
 $route['upload/update/(:num)'] = "UploadController/update/$1";
 $route['upload/delete/(:num)'] = "UploadController/delete/$1";
 
-$route['page/(:num)/(:any)'] = "ShowController/pid/$1";
+$route['page/(:num)/(:any)'] = "showcontroller/pid/$1";
 $route['archive/(:num)/(:num)'] = "ArchiveController/byMonthYear/$1/$2";
 
 $route['comment'] = "CommentController";
