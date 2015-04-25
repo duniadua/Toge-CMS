@@ -99,8 +99,9 @@ endif;
                                         <br>
                                         <p style="text-overflow: url" class="text-center">                                            
                                             <input type="text" id="urlID" name="urlID" value="<?php
-                                                   echo base_url() . 'asset/images/' . $row->filename;
-                                                   ?>"/>                                        
+                                            echo base_url() . 'asset/images/' . $row->filename;
+                                            ?>"/>
+                                            <a class="btn btn-warning" href="<?php echo site_url() .'/upload/delete/'. $row->ID.'/'.$row->filename; ?>" role="button">Delete</a>                                            
                                     </div>
                                 </div>
                             </li>
