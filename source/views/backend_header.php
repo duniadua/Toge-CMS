@@ -64,7 +64,7 @@
                         <li class="active"><a href="#">Blogs <span class="sr-only">(current)</span></a></li>
                         <li><a href="<?php echo site_url('setmenu'); ?>">Create Menus</a></li>
                         <li><a href="<?php echo site_url('postpage/list'); ?>">Create Pages</a></li>
-                        <li><a href="<?php echo site_url('upload'); ?>">Upload Media</a></li>
+                        <li><a href="<?php echo site_url('upload'); ?>">Upload Image</a></li>
                         <li><a href="<?php echo site_url('comment/list'); ?>">Approve Comments</a></li>
                     </ul>
                     <ul class="nav nav-sidebar">

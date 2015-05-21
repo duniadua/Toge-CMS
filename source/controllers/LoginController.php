@@ -18,53 +18,62 @@ use Monolog\Handler\BrowserConsoleHandler;
 
 class LoginController extends CI_Controller {
 
+    private $log;
+
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->load->model('login_model', 'login');        
+        $this->load->model('login_model', 'login');
+        $this->log = new Logger('login');
+        $this->log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
     }
 
     public function index() {
-        $log = new Logger('login');
-        $log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
-        $log->addDebug('Login Page Called');
+        $this->log->addDebug('Login Page Called');
         $data['message'] = $this->session->flashdata('err_mssg');
-        
+
         if ($this->input->post('submit') == 'Login'):
             $email = $this->input->post('email');
-            if ($this->cekUserLogin()):                                     
+        
+//            TODO CEK ATTEMPT LOGIN
+            if ($this->authorization->isAlien()):
+                show_404();
+            endif;
+            
+            if ($this->cekLogin()):
                 $this->authorization->setUserCredential($email);
-                redirect('backend');                
-            else:                
-                $message = 'Login Failed Please Check Username Password';           
+                redirect('backend');
+            else:
+                $message = 'Login Failed Please Check Username Password';
+
                 $this->authorization->failedLogin($message);
-                redirect('login');                
+                redirect('login');
             endif;
         endif;
 
         $this->load->view('login', $data);
     }
 
-    private function cekUserLogin() {
+    private function cekLogin() {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        if (isset($email) && isset($password)):
+        $param = [
+            'where' => "email = '" . $email . "'",
+        ];
 
-            $sql = array("where" => "email = '" . $email . "'",
-                "and" => "password = '" . $password . "'");
+        $vaLogin = $this->login->get($param);
 
-            $val = $this->login->cekUser($sql);
-
-            if ($val->valLogin == 1):
+        if (isset($vaLogin)):
+            if (crypt($password, $vaLogin->password) == $vaLogin->password):
                 return TRUE;
             else:
                 return FALSE;
             endif;
         endif;
     }
-    
-    public function logout(){
+
+    public function logout() {
         $this->session->sess_destroy();
         redirect('login');
     }

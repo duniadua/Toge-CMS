@@ -29,7 +29,7 @@ endif;
                     <div class="form-horizontal">                            
 
                         <div class="form-group">
-                            <label for="status" class="col-sm-2 control-label">Upload Files</label>
+                            <label for="status" class="col-sm-2 control-label">Upload Image Files</label>
                             <div class="col-sm-4 col-md-4">
                                 <input type="file" name="userfile[]" size="20" multiple />
                             </div>

@@ -23,10 +23,10 @@ class TG_Model extends CI_Model {
     /**
      * Description of Gets Function
      *
-     <code>
+      <code>
      * Returning Array Object from table
      * Based on where, and, order by, limit
-     </code>
+      </code>
      * @access Public
      * @return Array Object 
      */
@@ -50,11 +50,11 @@ class TG_Model extends CI_Model {
     /**
      * Description of Get Function
      *
-     <code>
+      <code>
      * Returning object from table
      * Based on where, and, order by, limit
      * Query by used as single row
-     </code>
+      </code>
      * @access Public
      * @return Object
      * 
@@ -77,10 +77,10 @@ class TG_Model extends CI_Model {
     /**
      * Description of Insert Function
      *
-     <code>     
+      <code>
      * Insert based on tables declared on class
      * Field on form must same with table field    
-     </code>
+      </code>
      * @access Public
      * @return	Void
      */
@@ -178,7 +178,8 @@ class TG_Model extends CI_Model {
      * @access	public
      * @return	integer
      */
-    public function countRecord(){
+    public function countRecord() {
         return $this->db->count_all($this->tableName);
     }
+
 }

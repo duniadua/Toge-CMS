@@ -6,7 +6,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th><a href="<?php echo site_url('postpage'); ?>"><i class="fa fa-plus-square fa-2x" style="color: #198cff"></i></a></th>
+                        <th><a href="#"><i class="fa fa-plus-square fa-2x" style="color: #198cff"></i></a></th>
                         <th>#</th>
                         <th>Nama</th>
                         <th>Content</th>

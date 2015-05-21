@@ -73,6 +73,7 @@ class Authorization extends CI_Session {
 
     public function failedLogin($message) {
         $this->set_flashdata('err_mssg', "<p class='text-danger'>" . $message . "</p>");
+        $this->loginAttempt();
     }
 
     /*
@@ -87,6 +88,37 @@ class Authorization extends CI_Session {
         );
 
         $this->set_userdata($userData);
+    }
+
+    /*
+     * Login Attempt when login not success
+     * it trows alien so they cannot login
+     * return as Boolean
+     */
+
+    public function loginAttempt() {
+        (boolean) $funReturn = TRUE;
+        $loginCount = $this->userdata('times');
+
+        if (empty($loginCount)):
+            (int) $logCount = 1;
+        else:
+            (int) $a = 1;
+            (int) $logCount = $loginCount + $a;
+        endif;
+
+        $this->set_userdata(['times' => $logCount]);
+    }
+
+    public function isAlien($try = 3) {
+        (boolean) $funReturn = TRUE;
+        $loginCount = $this->userdata('times');
+
+        if ($loginCount > $try):
+            return $funReturn;
+        else:
+            return $funReturn = FALSE;
+        endif;
     }
 
 }

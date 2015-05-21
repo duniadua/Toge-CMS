@@ -15,8 +15,8 @@
  */
 class PageController extends CI_Controller {
 
-    private $viewPage = 'page';
-    private $listPage = 'listpage';
+    private $viewPage = 'pages/page';
+    private $listPage = 'pages/listpage';
     private $cekLogin;
 
     public function __construct() {
@@ -34,7 +34,9 @@ class PageController extends CI_Controller {
 //            redirect('page/list');
             }
             $param = array(
-                'where' => 'status = 1'
+                'where' => 'status = 1',
+                'limit' => PAGE_LIMIT,
+                'offset' => PAGE_OFFSET,
             );
 
             $data['pageTitle'] = 'Create Page';
@@ -84,10 +86,8 @@ class PageController extends CI_Controller {
         endif;
     }
 
-    public function delete($id) {
-        $cekLogin = $this->authorization->cekAuthorization();
-        
-        if ($cekLogin):
+    public function delete($id) {                
+        if ($this->cekLogin):
             $this->page->delete($id);
             redirect('postpage/list');
         else:

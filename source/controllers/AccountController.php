@@ -6,23 +6,28 @@
  * @link www.terastekno.net
  * 
  */
+use Monolog\Logger;
+use Monolog\Handler\BrowserConsoleHandler;
 class AccountController extends CI_Controller {
 
     //put your code here
     private $viewAccount = 'account';
     private $listAccount = 'listaccount';
+    private $log;
 
     public function __construct() {
         parent::__construct();
         $this->load->model('Account_Model','account');
+        $this->log = new Logger('password');
+        $this->log->pushHandler(new BrowserConsoleHandler(Logger::DEBUG));
     }
 
-    public function index() {
+    public function index() {                        
         if($this->input->post()){
-            $this->account->insert();
+            $this->account->insertAccount();
             redirect('account/list');
         }
-                
+                 
         $this->load->view('backend_header');
         $this->load->view($this->viewAccount);
         $this->load->view('backend_footer');
