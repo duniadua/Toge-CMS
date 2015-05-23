@@ -31,23 +31,22 @@ class LoginController extends CI_Controller {
     public function index() {
         $this->log->addDebug('Login Page Called');
         $data['message'] = $this->session->flashdata('err_mssg');
-
-        if ($this->input->post('submit') == 'Login'):
-            $email = $this->input->post('email');
         
-//            TODO CEK ATTEMPT LOGIN
-            if ($this->authorization->isAlien()):
-                show_404();
-            endif;
-            
-            if ($this->cekLogin()):
-                $this->authorization->setUserCredential($email);
-                redirect('backend');
-            else:
-                $message = 'Login Failed Please Check Username Password';
+        if ($this->authorization->isAlien()):
+            show_404();
+        else:
+            if ($this->input->post('submit') == 'Login'):
+                $email = $this->input->post('email');
 
-                $this->authorization->failedLogin($message);
-                redirect('login');
+                if ($this->cekLogin()):
+                    $this->authorization->setUserCredential($email);
+                    redirect('backend');
+                else:
+                    $message = 'Login Failed Please Check Username Password';
+
+                    $this->authorization->failedLogin($message);
+                    redirect('login');
+                endif;
             endif;
         endif;
 

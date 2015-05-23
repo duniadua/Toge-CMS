@@ -109,12 +109,18 @@ class Authorization extends CI_Session {
 
         $this->set_userdata(['times' => $logCount]);
     }
+    
+    /*
+     * Cek if alien
+     * it trows alien so they cannot login
+     * return as Boolean
+     */
 
     public function isAlien($try = 3) {
         (boolean) $funReturn = TRUE;
         $loginCount = $this->userdata('times');
 
-        if ($loginCount > $try):
+        if ($loginCount >= $try):
             return $funReturn;
         else:
             return $funReturn = FALSE;
