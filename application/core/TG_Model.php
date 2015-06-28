@@ -99,6 +99,14 @@ class TG_Model extends CI_Model {
                 $data[$myfield] = $this->input->ip_address();
             endif;
 
+            if ($myfield == 'url'):
+                if (!empty($this->input->post('url'))):
+                    $data[$myfield] = $this->input->post('url');                
+                else:
+                    $data[$myfield] = $this->input->post('urldirect');
+                endif;
+            endif;
+                        
             if ($myfield == 'createdt'):
                 $data[$myfield] = date('Y-m-d H:i:s');
             endif;

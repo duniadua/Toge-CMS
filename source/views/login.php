@@ -13,6 +13,7 @@
         <link href="<?php echo base_url('asset/css/login.css'); ?>" rel="stylesheet">
     </head>
     <body>
+
         <div class="container">
             <div class="row">                                                                    
                 <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -21,10 +22,10 @@
                         <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                              alt="">                        
                              <?php
-                             $attributs = array('class' => 'form-signin');
-                             echo form_open('login', $attributs);
-                             ?>
-                        <input name="email" type="text" class="form-control" placeholder="Email" required autofocus>
+                             echo form_open('login', ['class' => 'form-signin', 'name' => 'myForm', 'novalidate' => '']);
+                             ?>                            
+                        <input name="email" type="text"  class="form-control" placeholder="Email" required autofocus>                            
+
                         <input name="password" type="password" class="form-control" placeholder="Password" required>                            
                         <?php
                         if (isset($message)):
@@ -41,9 +42,9 @@
                     </div> 
 
                 </div>
-            </div>
-        </div>
+            </div>            
+        </div>        
         <script src="<?php echo base_url() ?>asset/js/jquery-1.11.2.min"></script>
-        <script src="<?php echo base_url() ?>asset/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>asset/js/bootstrap.min.js"></script>                
     </body>
 </html>

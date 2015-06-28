@@ -112,7 +112,7 @@ class Authorization extends CI_Session {
     
     /*
      * Cek if alien
-     * it trows alien so they cannot login
+     * it throws alien so they cannot login
      * return as Boolean
      */
 

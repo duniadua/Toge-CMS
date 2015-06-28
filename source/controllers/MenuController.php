@@ -29,6 +29,8 @@ class MenuController extends CI_Controller {
         if ($this->input->post()) {
             $this->mm->insert();
 //            redirect('page/list');
+//            dump($this->input->post());
+//            die();
         }
         $parm = array(
             'where' => 'status = 1'

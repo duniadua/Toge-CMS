@@ -13,5 +13,8 @@
         inline: false
     });
 </script>
+<script src="<?php echo base_url() ?>asset/js/angular.min.js"></script>
+<script src="<?php echo base_url() ?>asset/js/ui-utils.min.js"></script>
+<script src="<?php echo base_url() ?>asset/js/aController.js"></script>
 </body>
 </html>
